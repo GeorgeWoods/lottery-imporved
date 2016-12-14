@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+public class Lottery
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Welcome to the lottery draw!");
+        System.out.println("Please chose yur first 6 numbers between 1 and 50");
+
+        int[] numbers = new int[6];
+
+        for (int i = 0; i < 6; i++)
+        {
+            numbers [i] = input.nextInt();
+        }
+
+        System.out.println("Now enter your bonus ball between 1 and 50!");
+        int bonus = input.nextInt();
+
+        System.out.println("Your chosen numbers are: ");
+        for (int i = 0; i < 6; i++)
+        {
+            System.out.print(numbers[i] + ", ");
+        }
+        System.out.print("and your bonus ball is " + bonus);
+
+        int[] random = new int[6];
+        System.out.println();
+
+        for (int i = 0; i < 6; i++)
+        {
+            random[i] = (int )(Math. random() * 50);
+        }
+
+        int bonusBall = (int )(Math. random() * 50);
+        int matches = 0;
+        int bonusMatch = 0;
+        
+        for (int i = 0; i < 6; i++)
+        {
+            for (int index = 0; index < 6; index++)
+            {
+                if (numbers[i] == random[index])
+                {
+                    matches++;
+                }
+            }
+        }
+        
+        if (bonus == bonusBall)
+        {
+            bonusMatch++;
+        }
+        
+        System.out.println("You matched " + matches + " numbers!");
+        
+        if (matches == 3)
+        {
+            System.out.println("You have won £10");
+        }
+        else if (matches == 4)
+        {
+            System.out.println("You have won £100!");
+        }
+        else if (matches == 5)
+        {
+            System.out.println("You have won £1000!");
+        }
+        else if (matches == 6)
+        {
+            System.out.println("You have won £10000!");
+        }
+        else if (matches == 6 & bonusMatch == 1)
+        {
+            System.out.println("You have won £1000000");
+        }
+        else
+        {
+            System.out.println("Unfortunately you did not win anything today.");
+        }
+    }
+}
